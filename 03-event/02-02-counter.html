@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 方法處理</title>
+  <style>
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .counter {
+      width: 200px;
+      border: solid 1px #ddd;
+    }
+
+    .counter__text,
+    .counter__btns {
+      margin: 24px;
+    }
+
+    .counter__text {
+      font-size: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="counter mx-auto text-center">
+      <!-- TODO -->
+      <div class="counter__text"></div>
+      <div class="counter__btns">
+        <!-- TODO -->
+        <input type="button" value="Increment">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    const { createApp, ref } = Vue;
+    const app = {
+      setup() {
+        const counter = ref(0);
+        // TODO
+
+        return {
+          counter,
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

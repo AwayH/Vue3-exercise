@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 雙向綁定</title>
+  <style>
+    body,
+    select {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 300px;
+    }
+
+    .fix-margin {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    .form-shadow {
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    .form-rounded {
+      border-radius: .5rem;
+    }
+
+    .form__part,
+    .form__desc,
+    .form__alert {
+      margin: 1rem;
+    }
+
+    .form__alert--info {
+      background-color: #e7fbff;
+      border: solid 1px #caf6ff;
+    }
+
+    .form__select {
+      padding: .5rem;
+      width: 100%;
+      border: solid 1px #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <div class="form form-shadow fix-margin">
+        <div class="form__part">
+          <!-- TODO -->
+          <select class="form__select">
+            <option value="" disabled>請選擇國籍...</option>
+            <option>台灣</option>
+            <option>美國</option>
+            <option>日本</option>
+          </select>
+        </div>
+        <footer class="form__alert form__alert--info">
+          <!-- TODO -->
+          <p class="form__desc">國籍：</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    // TODO
+    const { createApp } = Vue;
+    const app = {
+      setup() {
+        // TODO
+
+        return {
+          // TODO
+
+        }
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>

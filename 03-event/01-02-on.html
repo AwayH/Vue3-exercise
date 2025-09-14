@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 方法處理</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ddd;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .figure {
+      width: fit-content;
+      padding: 1rem;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .figure-shadow {
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    .figure__caption {
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <figure class="figure figure-shadow mx-auto">
+      <!-- TODO: 參數、事件物件 -->
+      <img width="1025" height="370" :src="src" :alt="title" @click="clickHandler">
+      <figcaption class="figure__caption">{{ title }}</figcaption>
+    </figure>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { ref, createApp } = Vue;
+    const app = {
+      setup() {
+        const title = ref('PSP');
+        const src = ref('https://demo.f2e.idv.tw/value-6/images/002.jpg');
+        const url = ref('https://teach.f2e.idv.tw');
+        // TODO
+
+        return {
+          title,
+          src,
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

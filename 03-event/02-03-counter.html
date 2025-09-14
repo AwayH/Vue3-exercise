@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 方法處理</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, "LiHei Pro", "Microsoft JhengHei", MingLiU, sans-serif;
+      background-color: #ddd;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .figure {
+      margin: 0;
+    }
+
+    .figure__caption {
+      margin-top: 12px;
+    }
+
+    .img-resp {
+      max-width: 100%;
+      vertical-align: bottom;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .demo {
+      width: 700px;
+      padding: 15px;
+      background-color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <h1 class="text-center">Vue - Click</h1>
+    <div class="demo mx-auto">
+      <figure class="figure">
+        <!-- TODO -->
+        <img class="img-resp">
+        <!-- TODO -->
+        <figcaption class="figure__caption"></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    const { createApp, ref, reactive } = Vue;
+    const app = {
+      setup() {
+        const index = ref(0);
+        const pics = reactive([
+          'https://demo.f2e.idv.tw/dom-2/images/b1.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b2.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b3.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b4.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b5.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b6.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b7.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b8.jpg',
+          'https://demo.f2e.idv.tw/dom-2/images/b9.jpg',
+        ]);
+        // TODO
+
+        return {
+          index,
+          pics,
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>

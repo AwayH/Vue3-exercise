@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 雙向綁定</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    fieldset {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: solid 1px #ccc;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 500px;
+    }
+
+    .form__part {
+      margin-top: .5rem;
+    }
+
+    .form__alert {
+      margin-top: 1rem;
+    }
+
+    .form__desc {
+      margin: 1rem;
+    }
+
+    .form__input--checkbox {
+      margin-right: .5rem;
+    }
+
+    .form__alert--info {
+      background-color: #e7fbff;
+      border: solid 1px #caf6ff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+
+    <div class="container mx-auto">
+      <fieldset class="form">
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--checkbox" type="checkbox" id="Active">
+          <label class="form__label" for="Active">啟用</label>
+        </div>
+        <footer class="form__alert form__alert--info">
+          <!-- TODO -->
+          <p class="form__desc">狀態：{{ isActive }}</p>
+        </footer>
+      </fieldset>
+
+      <fieldset class="form">
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--checkbox" type="checkbox" value="Reading" id="Reading">
+          <label class="form__label" for="Reading">Reading</label>
+        </div>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--checkbox" type="checkbox" value="Painting" id="Painting">
+          <label class="form__label" for="Painting">Painting</label>
+        </div>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--checkbox" type="checkbox" value="Coding" id="Coding">
+          <label class="form__label" for="Coding">Coding</label>
+        </div>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--checkbox" type="checkbox" value="Walking" id="Walking">
+          <label class="form__label" for="Walking">Walking</label>
+        </div>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--checkbox" type="checkbox" value="Eating" id="Eating">
+          <label class="form__label" for="Eating">Eating</label>
+        </div>
+        <footer class="form__alert form__alert--info">
+          <!-- TODO -->
+          <p class="form__desc">選取到：</p>
+        </footer>
+      </fieldset>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    // TODO
+    const { createApp, ref } = Vue;
+    const app = {
+      setup() {
+        // TODO
+
+        return {
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>

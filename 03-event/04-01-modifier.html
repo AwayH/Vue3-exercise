@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 事件修飾符</title>
+  <style>
+    body {
+      background-color: #ddd;
+      font-family: Arial, Helvetica, "LiHei Pro", "Microsoft JhengHei", MingLiU, sans-serif
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      background-color: transparent;
+      padding-left: 10px;
+      padding-right: 10px;
+      line-height: 1.6;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 15px;
+      font-family: Arial, Helvetica, "LiHei Pro", "Microsoft JhengHei", MingLiU, sans-serif
+    }
+
+    .btn-danger {
+      width: 15%;
+      background-color: #dc3545;
+      color: #fff;
+      font-size: 15px
+    }
+
+    .btn-danger:hover {
+      background-color: #e4606d
+    }
+
+
+    .box-outer {
+      position: relative;
+      margin: 30px;
+      padding: 30px;
+      background-color: orange
+    }
+
+    .box-outer::before {
+      content: 'outer';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+
+    .box-inner {
+      position: relative;
+      padding: 30px;
+      background-color: #fff
+    }
+
+    .box-inner::before {
+      content: 'inner';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <h2>normal</h2>
+    <div @click="clickHandler('outer')" class="box-outer">
+      <div @click="clickHandler('inner')" class="box-inner">
+        <input @click="clickHandler('button')" class="btn btn-danger" type="button" value="按鈕">
+      </div>
+    </div>
+
+    <h2>capture</h2>
+    <!-- TODO -->
+    <div @click="clickHandler('outer')" class="box-outer">
+      <!-- TODO -->
+      <div @click="clickHandler('inner')" class="box-inner">
+        <!-- TODO -->
+        <input @click="clickHandler('button')" class="btn btn-danger" type="button" value="按鈕">
+      </div>
+    </div>
+
+    <h2>stop</h2>
+    <!-- TODO -->
+    <div @click="clickHandler('outer')" class="box-outer">
+      <!-- TODO -->
+      <div @click="clickHandler('inner')" class="box-inner">
+        <!-- TODO -->
+        <input @click="clickHandler('button')" class="btn btn-danger" type="button" value="按鈕">
+      </div>
+    </div>
+
+    <h2>self</h2>
+    <!-- TODO -->
+    <div @click="clickHandler('outer')" class="box-outer">
+      <!-- TODO -->
+      <div @click="clickHandler('inner')" class="box-inner">
+        <!-- TODO -->
+        <input @click="clickHandler('button')" class="btn btn-danger" type="button" value="按鈕">
+      </div>
+    </div>
+
+    <h2>once</h2>
+    <!-- TODO -->
+    <div @click="clickHandler('outer')" class="box-outer">
+      <!-- TODO -->
+      <div @click="clickHandler('inner')" class="box-inner">
+        <!-- TODO -->
+        <input @click="clickHandler('button')" class="btn btn-danger" type="button" value="按鈕">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.47/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp } = Vue;
+    const app = {
+      setup() {
+        function clickHandler(val) {
+          console.log(val);
+        };
+
+        return {
+          clickHandler,
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>

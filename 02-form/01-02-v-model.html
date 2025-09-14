@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 雙向綁定</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 300px;
+    }
+
+    .fix-margin {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    /* Modules ---------------- */
+
+    .form-shadow {
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    .form-rounded {
+      border-radius: .5rem;
+    }
+
+    .form__tit {
+      text-align: center;
+    }
+
+    .form__part,
+    .form__desc {
+      margin: 1rem;
+    }
+
+    .form__input--number {
+      width: 100%;
+      padding: .5rem;
+      background-color: rgba(232, 240, 254);
+      border: 1px solid #e9e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form__input--number:focus {
+      outline: none;
+      border-color: #3d6aaf;
+      box-shadow: 0 0 0 4px #d9e8ff;
+    }
+
+    .form__part--row {
+      display: flex;
+      align-items: center;
+    }
+
+    .form__label {
+      box-sizing: border-box;
+    }
+
+    .form__label {
+      width: 20%;
+      padding-right: .5rem;
+      white-space: nowrap;
+    }
+
+    .form__input--number {
+      width: 80%;
+    }
+
+    .form__ls {
+      list-style-type: none;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .form__item {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+
+    .form__item+.form__item {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <div class="form form-rounded form-shadow fix-margin">
+        <h1 class="form__tit">匯兌試算</h1>
+        <div class="form__part form__part--row">
+          <label class="form__label" for="Base">台幣：</label>
+          <!-- TODO -->
+          <input class="form__input form__input--number" id="Base" type="number" placeholder="0" v-model="price">
+        </div>
+        <ul class="form__ls">
+          <!-- TODO -->
+          <li class="form__item">日幣：</li>
+          <!-- TODO -->
+          <li class="form__item">人民幣：</li>
+          <!-- TODO -->
+          <li class="form__item">美金：</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    // TODO
+    const { createApp } = Vue;
+    const app = {
+      setup() {
+        // TODO
+
+        return {
+          // TODO
+
+        }
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

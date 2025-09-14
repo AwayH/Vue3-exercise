@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 按鍵修飾符</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    fieldset {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: solid 1px #ccc;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 500px;
+    }
+
+    .form__part {
+      margin-top: .5rem;
+    }
+
+    .form__alert {
+      margin-top: 1rem;
+    }
+
+    .form__desc {
+      margin: 1rem;
+    }
+
+    .form__input--text {
+      width: 100%;
+      padding: .5rem;
+      background-color: rgba(232, 240, 254);
+      border: 1px solid #e9e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form__input--text:focus {
+      outline: none;
+      border-color: #3d6aaf;
+      box-shadow: 0 0 0 4px #d9e8ff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+
+    <div class="container mx-auto">
+      <fieldset class="form">
+        <legend>enter</legend>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--text" type="text">
+        </div>
+      </fieldset>
+
+      <fieldset class="form">
+        <legend>space</legend>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--text" type="text">
+        </div>
+      </fieldset>
+
+      <fieldset class="form">
+        <legend>esc</legend>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--text" type="text">
+        </div>
+      </fieldset>
+
+      <fieldset class="form">
+        <legend>ctrl + enter</legend>
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--text" type="text">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp } = Vue;
+    const app = {
+      setup() {
+        // TODO
+
+        return {
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>

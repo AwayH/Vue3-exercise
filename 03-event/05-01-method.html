@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 方法與計算屬性</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 300px;
+    }
+
+    .fix-margin {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    .form-shadow {
+      box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    }
+
+    .form__part,
+    .form__desc,
+    .form__alert {
+      margin: 1rem;
+    }
+
+    .form__input--text {
+      width: 100%;
+      padding: .5rem;
+      background-color: rgba(232, 240, 254);
+      border: 1px solid #e9e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form__input--text:focus {
+      outline: none;
+      border-color: #3d6aaf;
+      box-shadow: 0 0 0 4px #d9e8ff;
+    }
+
+    .form__alert--info {
+      background-color: #e7fbff;
+      border: solid 1px #caf6ff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+
+    <div class="container mx-auto">
+
+      <div class="form form-shadow fix-margin">
+
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--text" type="text">
+        </div>
+
+        <div class="form__part">
+          <!-- TODO -->
+          <input class="form__input form__input--text" type="text">
+        </div>
+
+        <footer class="form__alert form__alert--info">
+          <!-- TODO: getFullName -->
+          <p class="form__desc"></p>
+        </footer>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp, reactive } = Vue;
+    const app = {
+      setup() {
+        const user = reactive({
+          firstName: 'Away',
+          lastName: 'Hung',
+        });
+        // TODO
+
+        return {
+          user,
+          // TODO
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>

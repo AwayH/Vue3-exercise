@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue</title>
+  <style>
+    body {
+      background-color: #ddd;
+      font-family: Arial, Helvetica, "LiHei Pro", "Microsoft JhengHei", MingLiU, sans-serif
+    }
+
+    .btn {
+      display: inline-block;
+      border: 0;
+      background-color: transparent;
+      padding-left: 10px;
+      padding-right: 10px;
+      line-height: 1.6;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 15px;
+      font-family: Arial, Helvetica, "LiHei Pro", "Microsoft JhengHei", MingLiU, sans-serif
+    }
+
+    .btn-peace {
+      background-color: #007bff;
+      color: #fff
+    }
+
+    .dropdown {
+      position: relative
+    }
+
+    .dropdown__arrow::after {
+      content: '';
+      display: inline-block;
+      border: solid 5px transparent;
+      border-top-color: #fff;
+      margin-left: 5px;
+      position: relative;
+      vertical-align: middle
+    }
+
+    .dropdown__body {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      z-index: 1;
+      border-radius: 3px;
+      background-color: #fff;
+      -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3)
+    }
+
+    .dropdown__body a {
+      display: block;
+      padding: 10px 15px;
+      border-top: solid 1px #ddd;
+      color: #666;
+      text-decoration: none
+    }
+
+    .dropdown__body a:first-child {
+      border-top: none
+    }
+
+    .post {
+      padding: 15px;
+      width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff
+    }
+
+    .post__tit,
+    .post__sub {
+      font-weight: 100
+    }
+
+    .post__tit {
+      font-size: 30px
+    }
+
+    .post__sub {
+      color: #e36c09;
+      font-size: 22px
+    }
+
+    .post__desc {
+      line-height: 1.6;
+      text-align: justify
+    }
+
+    .js-show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="post">
+      <h1 class="post__tit">從美工到設計師！憑什麼說我是設計師？</h1>
+      <p class="post__desc">
+        那麼到底設計師何以為師呢？為什麼要去理解“師”的這個概念呢？其實我是換位元思想，即站在客戶的角度，充分考慮他為什麼要找你做設計的理由？如果搞清楚理由就是找到了自己的設計之師。而自己換位思想，找不到這個師之理由的話，那麼自然您還不算是設計師，那就在每天別人叫你設計師的時候，多多思考設計師何以為師？而其中設計師的師，也是需要我們每天去努力工作和學習的，不斷的改善提高自己的設計水準和綜合素質。讓自己從設計員到設計師的蛻變中，對得起設計師可以為師。
+      </p>
+      <h2 class="post__sub">找設計師需要理由嗎？</h2>
+      <p class="post__desc">
+        我們去找客戶需要理由嗎？我想更多的是目的性，而往往目的性越強烈，也越是容易失去客戶。客戶找你是需要理由的，他的目的性也是正常的，目的是滿足他要求的設計價格、風格、服務、溝通方式等等。打個比喻：市場上一件襯衫有幾十元一件的，也有上千元一件的，為什麼還有很人會買上千元的襯衫？因為他給予理由，什麼理由？高級的材料、做工、成本、服務、品牌等等，所以這個理由滿足了這樣的客戶去買。再高的設計費也是要給予客戶理由的，只要考慮到給予理由，自然客戶毫無理由的選擇了你。
+      </p>
+      <p class="post__desc">
+        在接待任何一個專案和客戶，都需要將自己轉換為對方，站在他的立場考慮，你有哪些理由可以成為他心目中的設計師？你有哪些理由可以滿足這個項目的完成？分析出客戶的需求，處理好雙方之間的冷暖關係，設計好他期待的作品，消除他疑惑的信任感，給予了充分的理由後，你就可以得到他找你的理由……
+      </p>
+      <h2 class="post__sub">要做好設計，先別做壞設計</h2>
+      <p class="post__desc">
+        這句話是我考慮甚久得出的，雖然貌似很無聊，我卻認為非常重要。創業初期的設計朋友，請時刻記得這句話，然後留點空白，讓你自己去思考。因為很多人在接單子的時候，只想著是單子是利潤，而忽略了這個設計本身造成的好壞。</p>
+      <p class="post__desc">
+        我曾經目睹上海一家策略公司，溫州的一個企業找他們做品牌推廣項目，該公司派人分析客戶企業背景和實際情況，若達不到自己要求，就放棄操作這個項目，即使客戶付再多的項目費，也堅持寧願放棄。我當時不明白，為什麼給那麼多錢也不做？後來我明白他們公司為什麼一直那麼成功，因為他們只做好設計，不做壞設計，那是他們保持長期發展的戰略和原則。
+      </p>
+      <p class="post__desc">所以在初期創業中，我也在選擇客戶上開始有了原則，儘量讓好的設計找到自己。</p>
+      <h2 class="post__sub">突出就是優勢</h2>
+      <p class="post__desc">
+        一定要突出，作為設計師必須要有亮點。現在會滑鼠會用軟體的人都稱自己是設計師，藝術系畢業和設計師人才越來越多，這個行業的競爭激烈也是這個時代的表現之一。大大小小的工作室和設計公司多如牛毛，甚至有人冷笑設計公司現在比WC還要多。這個時候設計師必須要做出自己的獨特性，創業的設計師經營公司也要與其他要有差異性，突出就是優勢，那非常重要。
+      </p>
+
+      <div class="post__btnContainer">
+        <div class="dropdown">
+          <div class="dropdown__head">
+            <!-- TODO: prevent default behavior -->
+            <a @click="clickHandler" class="btn btn-peace dropdown__arrow" href="#">分享</a>
+          </div>
+
+          <div class="dropdown__body" :class="{ 'js-show': isShow }">
+            <a href="http://www.facebook.com" target="_blank">Facebook</a>
+            <a href="https://line.me" target="_blank">Line</a>
+          </div>
+
+        </div>
+      </div>
+
+      <h2 class="post__sub">設計沒有好與壞，只有對與錯</h2>
+      <p class="post__desc">
+        以上我說的好設計和壞設計，自然是設計的前提。而設計有好和壞嗎？我更希望大家用對與錯來看待這個問題。作為設計師，他不是藝術家和商業師，首先應該是為業主解決實際問題，才是對的設計。不懂設計的人才會到處說這個設計好或者不好，為什麼這樣說？因為任何一樣作品都有他的遺憾，哪怕是大師的五星級賓館都是有遺憾的，所以不該用好不好來判定。出發點和目的性不同，自然設計的要求和本質也不同，違背了設計本意就失去意義，更何談好壞？所以在對與錯之間去思考設計，會更準確的為客戶解決實際問題，找到設計的真諦！
+      </p>
+      <p class="post__desc">馬伯庸在 《親王駕到！馬伯庸教你如何做一個萬年好甲方》 說：對我們甲方來說，藝術性是第三才需要考慮的因素。</p>
+      <p class="post__desc">我們第二考慮的是如何有效率地把核心信息傳達到客戶那兒去。無論多麼惡俗粗暴。當藝術性對效率有損害的時候，我們會毫不猶豫地犧牲掉藝術，哪怕它多麼驚世駭俗。</p>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    const { createApp, ref } = Vue;
+    const app = {
+      setup() {
+        const isShow = ref(false);
+
+        function clickHandler() {
+          isShow.value = !isShow.value;
+        };
+
+        return {
+          isShow,
+          clickHandler,
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+  </script>
+
+</body>
+
+</html>
