@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - watch</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    fieldset {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: solid 1px #ccc;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 300px;
+    }
+
+    .fix-margin {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    .form__part,
+    .form__btns {
+      margin-top: 1rem;
+    }
+
+    .form__label {
+      display: inline-block;
+      margin-bottom: .5rem;
+    }
+
+    .form__input--text,
+    .form__input--email,
+    .form__input--tel {
+      width: 100%;
+      padding: .5rem;
+      background-color: rgba(232, 240, 254);
+      border: 1px solid #e9e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form__input--text:focus,
+    .form__input--email:focus,
+    .form__input--tel:focus {
+      outline: none;
+      border-color: #3d6aaf;
+      box-shadow: 0 0 0 4px #d9e8ff;
+    }
+
+    .text-success {
+      color: green;
+    }
+
+    .text-danger {
+      color: red;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <fieldset class="form">
+        <legend>個人資料修改</legend>
+        <div class="form__part">
+          <label class="form__label" for="Name">姓名:</label>
+          <input v-model="user.name" class="form__input form__input--text" type="text" id="Name">
+        </div>
+        <div class="form__part">
+          <label class="form__label" for="Nickname">暱稱:</label>
+          <input v-model="user.nickname" class="form__input form__input--text" type="text" id="Nickname">
+        </div>
+        <div class="form__part">
+          <label class="form__label" for="Email">電子郵件:</label>
+          <input v-model="user.email" class="form__input form__input--email" type="email" id="Email">
+        </div>
+        <div class="form__part">
+          <label class="form__label" for="Cell">手機號碼:</label>
+          <input v-model="user.cell" class="form__input form__input--tel" type="tel" id="Cell">
+        </div>
+        <div class="form__part">
+          <label class="form__label" for="Skill">{{ user.skill[0].name }}:</label>
+          <input v-model="user.skill[0].score" class="form__input form__input--text" type="text" id="Skill">
+        </div>
+        <div class="form__btns text-center">
+          <!-- TODO -->
+          <input type="button" value="完成修改">
+        </div>
+      </fieldset>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    // TODO
+    const { createApp, reactive } = Vue;
+    const app = {
+      setup() {
+        const user = reactive({
+          name: '王大衛',
+          nickname: 'Away',
+          email: 'manigb@gmail.com',
+          cell: '0912345678',
+          skill: [
+            {
+              name: 'HTML',
+              score: '50',
+            },
+            {
+              name: 'Javascript',
+              score: '60',
+            },
+            {
+              name: 'CSS',
+              score: '70',
+            },
+          ],
+        });
+
+        // TODO
+        
+        return {
+          user,
+          // TODO
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

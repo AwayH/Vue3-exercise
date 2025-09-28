@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - watchEffect</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .box {
+      width: fit-content;
+      text-align: center;
+      border: solid 1px #ccc;
+      background-color: #eee;
+    }
+
+    .box__desc,
+    .box__btns {
+      margin: 1rem;
+    }
+
+    .box__btns input[type="button"]+input[type="button"] {
+      margin-left: 1rem;
+    }
+
+    .box__desc {
+      font-size: 3rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="box mx-auto">
+      <p class="box__desc">{{ counter }}</p>
+      <div class="box__btns">
+        <input type="button" @click="clickHandler" value="Click">
+        <!-- TODO: 事件綁定 -->
+        <input type="button" value="Stop WatchEffect">
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp, ref, watchEffect } = Vue;
+    const app = {
+      setup() {
+        const counter = ref(0);
+        const clickHandler = () => {
+          counter.value++;
+        };
+
+        // TODO: 以變數宣告形式移除監聽
+        watchEffect(() => {
+          console.log(counter.value);
+        });
+
+        return {
+          counter,
+          clickHandler,
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

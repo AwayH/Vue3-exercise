@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue - 雙向綁定</title>
+  <title>Vue - 方法</title>
   <style>
     body,
     input {
@@ -27,23 +27,17 @@
       border-bottom: 1px solid transparent;
     }
 
-    /* Modules ---------------- */
-
     .form-shadow {
       box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-    }
-
-    .form-rounded {
-      border-radius: .5rem;
-    }
-
-    .form__tit {
-      text-align: center;
     }
 
     .form__part,
     .form__desc {
       margin: 1rem;
+    }
+
+    .form__label {
+      margin-left: .5rem;
     }
 
     .form__input--number {
@@ -61,40 +55,8 @@
       box-shadow: 0 0 0 4px #d9e8ff;
     }
 
-    .form__part--row {
-      display: flex;
-      align-items: center;
-    }
-
-    .form__label {
-      box-sizing: border-box;
-    }
-
-    .form__label {
-      width: 20%;
-      padding-right: .5rem;
-      white-space: nowrap;
-    }
-
-    .form__input--number {
-      width: 80%;
-    }
-
-    .form__ls {
-      list-style-type: none;
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .form__item {
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
-
-    .form__item+.form__item {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid #ccc;
+    .form__input--4 {
+      width: 40%;
     }
   </style>
 </head>
@@ -103,21 +65,19 @@
 
   <div id="App">
     <div class="container mx-auto">
-      <div class="form form-rounded form-shadow fix-margin">
-        <h1 class="form__tit">匯兌試算</h1>
-        <div class="form__part form__part--row">
-          <label class="form__label" for="Base">台幣：</label>
-          <!-- TODO -->
-          <input class="form__input form__input--number" id="Base" type="number" placeholder="0">
+      <div class="form form-shadow fix-margin">
+        <!-- TODO: 僅一次性的響應式 -->
+        <p class="form__desc">1 日圓，兌換 {{ twd }} 新台幣</p>
+        <div class="form__part">
+          <!-- TODO: 資料與行為的綁定 -->
+          <input class="form__input form__input--number form__input--4" id="Twd" type="number">
+          <label class="form__label" for="Twd">新台幣</label>
         </div>
-        <ul class="form__ls">
-          <!-- TODO -->
-          <li class="form__item">日幣：</li>
-          <!-- TODO -->
-          <li class="form__item">人民幣：</li>
-          <!-- TODO -->
-          <li class="form__item">美金：</li>
-        </ul>
+        <div class="form__part">
+          <!-- TODO: 資料與行為的綁定 -->
+          <input class="form__input form__input--number form__input--4" id="Jpy" type="number">
+          <label class="form__label" for="Jpy">日圓</label>
+        </div>
       </div>
     </div>
   </div>
@@ -125,16 +85,20 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
 
   <script>
-    // TODO
-    const { createApp } = Vue;
+
+    const { ref, createApp } = Vue;
     const app = {
       setup() {
+        const twd = ref(.25);
+        const jpy = ref(1);
         // TODO
 
         return {
+          twd,
+          jpy,
           // TODO
-
-        }
+          
+        };
       },
     };
 

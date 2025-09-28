@@ -5,15 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vue - 行內處理</title>
+  <title>Vue - watch</title>
   <style>
     body,
     input {
       font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-      background-color: #eee;
+      font-size: 1rem;
     }
 
     .mx-auto {
@@ -21,22 +18,19 @@
       margin-right: auto;
     }
 
-    .text-center {
-      text-align: center;
-    }
-
-    .counter {
+    .box {
       width: fit-content;
-      border: solid 1px #ddd;
-      background-color: #fff;
+      text-align: center;
+      border: solid 1px #ccc;
+      background-color: #eee;
     }
 
-    .counter__text,
-    .counter__btns {
-      margin: 24px;
+    .box__desc,
+    .box__btns {
+      margin: 1rem;
     }
 
-    .counter__text {
+    .box__desc {
       font-size: 3rem;
     }
   </style>
@@ -45,12 +39,10 @@
 <body>
 
   <div id="App">
-    <div class="counter mx-auto text-center">
-      <!-- TODO -->
-      <div class="counter__text"></div>
-      <div class="counter__btns">
-        <!-- TODO: 變數與邏輯計算 -->
-        <input type="button" value="Increment">
+    <div class="box mx-auto">
+      <p class="box__desc">{{ user.firstName }} {{ user.lastName }}</p>
+      <div class="box__btns">
+        <input type="button" @click="clickHandler" value="Click">
       </div>
     </div>
   </div>
@@ -59,19 +51,29 @@
 
   <script>
     // TODO
-    const { createApp } = Vue;
+    const { createApp, reactive } = Vue;
     const app = {
       setup() {
-        // TODO
+        const user = reactive({
+          firstName: 'Away',
+          lastName: 'Hung',
+          job: {
+            name: 'Engineer',
+            salary: 100000,
+          },
+        });
+
+        // TODO: watch 資料的深度
 
         return {
-          // TODO
-
+          user,
+          clickHandler,
         };
       },
     };
 
     createApp(app).mount('#App');
+
   </script>
 
 </body>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - watch</title>
+  <style>
+    body,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+    }
+
+    fieldset {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: solid 1px #ccc;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 300px;
+    }
+
+    .fix-margin {
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    .form__part {
+      margin-top: 1rem;
+    }
+
+    .form__input--tel {
+      width: 100%;
+      padding: .5rem;
+      background-color: rgba(232, 240, 254);
+      border: 1px solid #e9e6e6;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .form__input--tel:focus {
+      outline: none;
+      border-color: #3d6aaf;
+      box-shadow: 0 0 0 4px #d9e8ff;
+    }
+
+    .text-success {
+      color: green;
+    }
+
+    .text-danger {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <fieldset class="form">
+        <legend>手機號碼驗證</legend>
+        <div class="form__part">
+          <input class="form__input form__input--tel" type="tel" placeholder="請輸入手機號碼" v-model="cellNumber">
+        </div>
+        <!-- TODO: 套用情境樣式 -->
+        <p></p>
+      </fieldset>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+    // 正規表示法(手機): /^09[0-9]{8}$/
+
+    // TODO
+    const { createApp, ref, watch } = Vue;
+    const app = {
+      setup() {
+        const cellNumber = ref('');
+        // TODO: watch 數據的變化並用正規表示法驗證手機號碼格式
+
+        return {
+          cellNumber,
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+
+
+  </script>
+
+</body>
+
+</html>
