@@ -40,10 +40,10 @@
 
   <div id="App">
     <div class="box mx-auto">
-      <!-- TODO -->
+      <!-- TODO: Template syntax -->
       <p class="box__desc"></p>
       <div class="box__btns">
-        <!-- TODO: 事件綁定 -->
+        <!-- TODO: Event binding -->
         <input type="button" value="Click" />
       </div>
     </div>
@@ -57,10 +57,14 @@
     const app = {
       setup() {
         const user = reactive({
-          firstName: 'Away',
-          lastName: 'Hung',
+          firstName: 'Mike',
+          lastName: 'Lee',
+          job: {
+            title: 'Software Engineer',
+            company: 'Google',
+          }
         });
-        // TODO: 綁定方法與 wactchEffect log
+        // TODO: Event binding and wactchEffect log
 
         return {
           user,

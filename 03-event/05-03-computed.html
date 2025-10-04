@@ -67,12 +67,12 @@
     <div class="container mx-auto">
       <div class="form form-shadow fix-margin">
         <div class="form__desc">
-          1 新台幣，兌換 {{ exchange }} 日圓
+          1 新台幣，兌換 {{ exchangeRate }} 日圓
         </div>
         <div class="form__part">
-          <!-- TODO -->
+          <!-- TODO: Data binding -->
           <input class="form__input form__input--number form__input--3" type="number" id="Jpy" placeholder="0">
-          <!-- TODO -->
+          <!-- TODO: Template syntax -->
           <label class="form__label" for="Jpy">新台幣，兌換 日圓</label>
         </div>
       </div>
@@ -87,12 +87,12 @@
     const app = {
       setup() {
         const twd = ref(1);
-        const exchange = ref(4.38);
+        const exchangeRate = 4.38;
         // TODO
 
         return {
           twd,
-          exchange,
+          exchangeRate,
           // TODO
 
         };

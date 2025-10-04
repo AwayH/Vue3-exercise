@@ -55,15 +55,19 @@
     const app = {
       setup() {
         const user = reactive({
-          firstName: 'Away',
-          lastName: 'Hung',
+          firstName: 'Mike',
+          lastName: 'Lee',
           job: {
             name: 'Engineer',
             salary: 100000,
           },
         });
 
-        // TODO: watch 資料的深度
+        function clickHandler() {
+          user.firstName += '!';
+        }
+
+        // TODO: watch data deep
 
         return {
           user,

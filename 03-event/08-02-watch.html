@@ -71,8 +71,8 @@
         <div class="form__part">
           <input class="form__input form__input--tel" type="tel" placeholder="請輸入手機號碼" v-model="cellNumber">
         </div>
-        <!-- TODO: 套用情境樣式 -->
-        <p></p>
+        <!-- TODO: add Class -->
+        <p v-show="cellNumber"></p>
       </fieldset>
     </div>
   </div>
@@ -80,14 +80,14 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
 
   <script>
-    // 正規表示法(手機): /^09[0-9]{8}$/
+    // Regular Expression(Cell number): /^09[0-9]{8}$/
 
     // TODO
     const { createApp, ref, watch } = Vue;
     const app = {
       setup() {
         const cellNumber = ref('');
-        // TODO: watch 數據的變化並用正規表示法驗證手機號碼格式
+        // TODO: Watch data and validate cell number by regex
 
         return {
           cellNumber,

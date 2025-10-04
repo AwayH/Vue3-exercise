@@ -47,7 +47,7 @@
       <p class="box__desc">{{ counter }}</p>
       <div class="box__btns">
         <input type="button" @click="clickHandler" value="Click">
-        <!-- TODO: 事件綁定 -->
+        <!-- TODO: Event binding -->
         <input type="button" value="Stop WatchEffect">
       </div>
     </div>
@@ -61,11 +61,12 @@
     const app = {
       setup() {
         const counter = ref(0);
-        const clickHandler = () => {
+
+        function clickHandler() {
           counter.value++;
         };
 
-        // TODO: 以變數宣告形式移除監聽
+        // TODO: Remove watcher by variable
         watchEffect(() => {
           console.log(counter.value);
         });

@@ -66,15 +66,15 @@
   <div id="App">
     <div class="container mx-auto">
       <div class="form form-shadow fix-margin">
-        <!-- TODO: 僅一次性的響應式 -->
-        <p class="form__desc">1 日圓，兌換 {{ twd }} 新台幣</p>
+        <!-- TODO: Template syntax -->
+        <p class="form__desc">1 日圓，兌換 新台幣</p>
         <div class="form__part">
-          <!-- TODO: 資料與行為的綁定 -->
+          <!-- TODO: Data and Behavior binding -->
           <input class="form__input form__input--number form__input--4" id="Twd" type="number">
           <label class="form__label" for="Twd">新台幣</label>
         </div>
         <div class="form__part">
-          <!-- TODO: 資料與行為的綁定 -->
+          <!-- TODO: Data and Behavior binding -->
           <input class="form__input form__input--number form__input--4" id="Jpy" type="number">
           <label class="form__label" for="Jpy">日圓</label>
         </div>
@@ -89,15 +89,18 @@
     const { ref, createApp } = Vue;
     const app = {
       setup() {
-        const twd = ref(.25);
-        const jpy = ref(1);
+        const twd = ref(0);
+        const jpy = ref(0);
+        const exchangeRate = .25; // 1 日圓 = 0.25 新台幣
+
         // TODO
 
         return {
           twd,
           jpy,
+          exchangeRate,
           // TODO
-          
+
         };
       },
     };

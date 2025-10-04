@@ -67,19 +67,17 @@
     <div class="container mx-auto">
       <div class="form form-shadow fix-margin">
         <div class="form__part">
-          <!-- TODO -->
-          <input class="form__input form__input--number form__input--4" id="Twd" type="number"
-            v-model="twd"
-          >
+          <!-- TODO: Data binding -->
+          <input class="form__input form__input--number form__input--4" id="Twd" type="number">
           <label class="form__label" for="Twd">新台幣</label>
         </div>
         <div class="form__part">
-          <!-- TODO -->
+          <!-- TODO: Data binding -->
           <input class="form__input form__input--number form__input--4" id="Jpy" type="number">
           <label class="form__label" for="Jpy">日圓</label>
         </div>
         <div class="form__part">
-          <!-- TODO -->
+          <!-- TODO: Data binding -->
           <input class="form__input form__input--number form__input--4" id="Usd" type="number">
           <label class="form__label" for="Usd">美元</label>
         </div>
@@ -91,14 +89,18 @@
 
   <script>
     // TODO
-    const { createApp, ref } = Vue;
+    const { createApp, ref, computed } = Vue;
     const app = {
       setup() {
         const twd = ref(0);
+        const jpyExchangeRate = 4; // 1 新台幣 = 4 日圓
+        const usdExchangeRate = 33; // 1 新台幣 = 33 美元
         // TODO
 
         return {
           twd,
+          // TODO
+
         };
       },
     };
