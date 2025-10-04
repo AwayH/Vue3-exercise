@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 列表渲染</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #eee;
+    }
+
+    .container {
+      width: 300px;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .box__ls {
+      padding-left: 0;
+      list-style-type: none;
+      background-color: #fff;
+      border: solid 1px #ddd;
+      border-radius: .5rem;
+    }
+
+    .box__item {
+      padding: .7rem 1rem;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .box__item+.box__item {
+      border-top: 1px solid #ddd;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <div class="box">
+        <ul class="box__ls">
+          <!-- TODO: Template syntax -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp, reactive } = Vue;
+    const app = {
+      setup() {
+        const subjects = reactive(['html', 'rwd', 'javascript', 'vue', 'sass']);
+
+        return {
+          subjects,
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

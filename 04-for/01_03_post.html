@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 列表渲染</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #ddd;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .container {
+      width: 750px;
+    }
+
+    .post__ls {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .post__item {
+      background-color: #fff;
+      padding: 15px;
+    }
+
+    .post__item+.post__item {
+      margin-top: 15px;
+    }
+
+    .post__tit {
+      margin-top: 0;
+    }
+
+    .post__tit a {
+      color: #0da4d3;
+      text-decoration: none;
+    }
+
+    .post__tit a:hover {
+      text-decoration: underline;
+    }
+
+    .post__img {
+      max-width: 100%;
+      vertical-align: bottom;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <div class="post">
+        <div class="post__ls">
+          <!-- TODO: Template syntax -->
+          <section class="post__item">
+            <h3 class="post__tit">
+              <!-- TODO: Template syntax -->
+              <a target="_blank"></a>
+            </h3>
+            <div class="imgContainer">
+              <!-- TODO: Template syntax -->
+              <a target="_blank">
+                <!-- TODO: Template syntax -->
+                <img class="post__img">
+              </a>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp, reactive } = Vue;
+    const app = {
+      setup() {
+        const posts = reactive([
+          {
+            id: 1,
+            title: '淺談 HTML5',
+            src: 'https://demo.f2e.idv.tw/value-6/images/006.jpg',
+            url: 'https://docs.f2e.idv.tw/html/what-is-html.html'
+          },
+          {
+            id: 2,
+            title: 'Dreamweaver – Spry 選單列',
+            src: 'https://demo.f2e.idv.tw/value-6/images/001.jpg',
+            url: 'https://docs.f2e.idv.tw/css/what-is-css.html'
+          }
+        ]);
+
+        return {
+          posts,
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

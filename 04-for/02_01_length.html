@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 列表渲染</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      background-color: #ddd;
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .box {
+      width: 500px;
+      display: flex;
+    }
+
+    .box__head,
+    .box__body {
+      border: solid 1px #ccc;
+      padding: 1rem;
+      background-color: #fff;
+    }
+
+    .box__head {
+      width: 60%;
+    }
+
+    .box__body {
+      width: 40%;
+      margin-left: -1px;
+    }
+
+    .box__pre, .box__ls {
+      line-height: 1.6;
+    }
+
+    .box__ls {
+      padding-left: 0;
+      margin: 0;
+      list-style-position: inside;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="box mx-auto">
+      <div class="box__head">
+        Data:
+        <!-- TODO: Template syntax -->
+        <pre class="box__pre"></pre>
+      </div>
+      <div class="box__body">
+        <!-- TODO: Template syntax -->
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+  <script>
+
+    const { createApp, reactive } = Vue;
+    const app = {
+      setup() {
+        const users = reactive([
+          {
+            id: 1,
+            name: 'Away',
+            age: 40,
+            skill: 'RWD',
+          },
+          {
+            id: 2,
+            name: 'Zero',
+            age: 30,
+            skill: 'APP',
+          },
+          {
+            id: 3,
+            name: 'Jamei',
+            age: 20,
+            skill: 'Data Base',
+          },
+          {
+            id: 4,
+            name: 'Rick',
+            age: 10,
+            skill: 'F2E',
+          },
+        ]);
+
+        return {
+          users,
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>

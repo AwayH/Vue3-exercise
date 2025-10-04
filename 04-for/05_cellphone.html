@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue - 列表渲染</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, "LiHei Pro", "Microsoft JhengHei", MingLiU, sans-serif;
+      color: #333;
+    }
+
+    a:hover {
+      text-decoration: none
+    }
+
+    figure {
+      margin: 0
+    }
+
+    .mx-auto {
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    .container {
+      max-width: 900px
+    }
+
+    .img-resp {
+      max-width: 100%;
+      height: auto;
+      vertical-align: bottom
+    }
+
+    .l-flip {
+      flex-direction: row-reverse
+    }
+
+    .base__head {
+      text-align: center
+    }
+
+    .base__tit {
+      font-size: 3em
+    }
+
+    .pd {
+      display: flex;
+      align-items: center;
+      padding-top: 2em;
+      padding-bottom: 2em;
+    }
+
+    .pd+.pd {
+      border-top: solid 1px #ccc
+    }
+
+    .pd__body,
+    .pd__foot {
+      padding: 1rem;
+      width: 50%;
+    }
+
+    .pd__name {
+      font-size: 2em
+    }
+
+    .pd__ls {
+      margin: 0;
+      padding: 0;
+      list-style-type: none
+    }
+
+    .pd__desc {
+      font-size: .9em;
+      color: #666
+    }
+
+    .pd__item,
+    .pd__desc {
+      line-height: 1.7;
+      text-align: justify
+    }
+
+    .link-peace {
+      color: #007bff
+    }
+
+    .link:hover {
+      text-decoration: none
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="App">
+    <div class="container mx-auto">
+      <div class="base">
+        <header class="base__head">
+          <h1 class="base__tit">iPhone 機型</h1>
+        </header>
+        <main class="base__body">
+          <!-- TODO: Template syntax -->
+           
+       </main>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.21/vue.global.min.js"></script>
+
+  <script>
+
+    const { createApp, reactive } = Vue;
+    const app = {
+      setup() {
+        const phones = reactive([
+          {
+            name: "iPhone 17 Pro Max",
+            date: 1757433600000,
+            capacity: ["256GB", "512GB", "1TB", "2TB"],
+            color: ["銀色", "宇宙橙色", "藏藍色"],
+            model: ["A3257（美國、波多黎各）", "A3525（巴林、加拿大、關島、日本、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島）", "A3527（中國大陸）", "A3526（其他國家與地區）"],
+            note: "詳細資料：iPhone 17 Pro Max 配備 6.9 吋全螢幕超 Retina XDR 顯示器和動態島。鋁金屬一體成形的設計，搭配霧面質感超瓷晶盾機背。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置三顆相機，位於從一側延伸到另一側的擴展平台上：融合超廣角相機、融合主相機和融合望遠相機。擴展平台右側有光學雷達掃描儀和 LED 原彩閃光燈。在美國、波多黎各、巴林、加拿大、關島、日本、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島，未配備 SIM 托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/125091",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png"
+          },
+          {
+            name: "iPhone 17 Pro",
+            date: 1757433600000,
+            capacity: ["256GB", "512GB", "1TB"],
+            color: ["銀色", "宇宙橙色", "藏藍色"],
+            model: ["A3256（美國、波多黎各）", "A3522（巴林、加拿大、關島、日本、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島）", "A3524（中國大陸）", "A3523（其他國家與地區）"],
+            note: "詳細資料：iPhone 17 Pro 配備 6.3 吋全螢幕超 Retina XDR 顯示器和動態島。鋁金屬一體成形的設計，搭配霧面質感超瓷晶盾機背。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置三顆相機，位於從一側延伸到另一側的擴展平台上：融合超廣角相機、融合主相機和融合望遠相機。擴展平台右側有光學雷達掃描儀和 LED 原彩閃光燈。在美國、波多黎各、巴林、加拿大、關島、日本、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島，未配備 SIM 托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/125090",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-colors.png"
+          },
+          {
+            name: "iPhone 17",
+            date: 1757433600000,
+            capacity: ["256GB", "512GB"],
+            color: ["黑色", "白色", "霧藍色", "鼠尾草綠色", "薰衣草紫色"],
+            model: ["A3258（美國、波多黎各）", "A3519（巴林、加拿大、關島、日本、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島）", "A3521（中國大陸）", "A3520（其他國家與地區）"],
+            note: "詳細資料：iPhone 17 配備 6.3 吋全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的陽極處理鋁金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置垂直排列的兩顆相機：融合超廣角相機和融合主相機。在美國、波多黎各、巴林、加拿大、關島、日本、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島，未配備 SIM 托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/125089",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-colors.png"
+          },
+          {
+            name: "iPhone Air",
+            date: 1757433600000,
+            capacity: ["256GB", "512GB", "1TB"],
+            color: ["太空黑色", "雲白色", "淺金色", "天藍色"],
+            model: ["A3260（美國、波多黎各、巴林、加拿大、關島、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島）", "A3516（日本）", "A3518（中國大陸）", "A3517（其他國家與地區）"],
+            note: "詳細資料：iPhone Air 配備 6.5 吋全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感超瓷晶盾，搭配弧形邊緣的鈦金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置單鏡頭相機，位於從一側延伸到另一側的擴展平台上。未配備 SIM 托盤。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/125092",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-air-colors.png"
+          },
+          {
+            name: "iPhone 16e",
+            date: 1739980800000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["黑色", "白色"],
+            model: ["A3212（美國、波多黎各）", "A3408（巴林、加拿大、伊拉克、關島、約旦、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國和美屬維京群島）", "A3410（中國大陸）", "A3409（其他國家與地區）"],
+            note: "詳細資料：iPhone 16e 配備 6.1 吋全螢幕超 Retina XDR OLED 顯示器。背面為玻璃，搭配邊緣平整的陽極處理鋁金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。背面設置單鏡頭相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/122208",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16e/iphone-16e-colors.png"
+          },
+          {
+            name: "iPhone 16 Pro Max",
+            date: 1725897600000,
+            capacity: ["256GB", "512GB", "1TB"],
+            color: ["黑色鈦金屬", "白色鈦金屬", "原色鈦金屬", "沙漠色鈦金屬"],
+            model: ["A3084（美國、波多黎各）", "A3295（巴林、加拿大、伊拉克、關島、日本、約旦、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國、美屬維京群島）", "A3297（中國大陸、香港、澳門）", "A3296（其他國家與地區）"],
+            note: "詳細資料：iPhone 16 Pro Max 配備 6.9 吋全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的鈦金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置三種相機：超廣角相機、融合相機和望遠相機。背面設置光學雷達掃描儀。背面設置 LED 原彩閃光燈。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/121032",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-pro-max-colors.png"
+          },
+          {
+            name: "iPhone 16 Pro",
+            date: 1725897600000,
+            capacity: ["128GB", "256GB", "512GB", "1TB"],
+            color: ["黑色鈦金屬", "白色鈦金屬", "原色鈦金屬", "沙漠色鈦金屬"],
+            model: ["A3083（美國、波多黎各）", "A3292（巴林、加拿大、伊拉克、關島、日本、約旦、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國、美屬維京群島）", "A3294（中國大陸、香港、澳門）", "A3293（其他國家與地區）"],
+            note: "詳細資料：iPhone 16 Pro 配備 6.3 吋全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的鈦金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置三種相機：超廣角相機、融合相機和望遠相機。背面設置光學雷達掃描儀。背面設置 LED 原彩閃光燈。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/121031",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-pro-colors.png"
+          },
+          {
+            name: "iPhone 16 Plus",
+            date: 1725897600000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["黑色", "白色", "粉紅色", "湖水綠色", "湛海藍色"],
+            model: ["A3082（美國、波多黎各）", "A3289（巴林、加拿大、伊拉克、關島、日本、約旦、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國、美屬維京群島）", "A3291（中國大陸、香港、澳門）", "A3290（其他國家與地區）"],
+            note: "詳細資料：iPhone 16 Plus 配備 6.7 吋全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的陽極處理鋁金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置垂直排列的兩種相機：超廣角相機和融合相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/121030",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-plus-colors.png"
+          },
+          {
+            name: "iPhone 16",
+            date: 1725897600000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["黑色", "白色", "粉紅色", "湖水綠色", "湛海藍色"],
+            model: ["A3081（美國、波多黎各）", "A3286（巴林、加拿大、伊拉克、關島、日本、約旦、科威特、墨西哥、阿曼、卡達、沙烏地阿拉伯、阿拉伯聯合大公國、美屬維京群島）", "A3288（中國大陸、香港、澳門）", "A3287（其他國家與地區）"],
+            note: "詳細資料：iPhone 16 配備 6.1 吋全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的陽極處理鋁金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。相機控制位於右側下方。背面設置垂直排列的兩種相機：超廣角相機和融合相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/121029",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-16-colors.png"
+          },
+          {
+            name: "iPhone 15 Pro Max",
+            date: 1694534400000,
+            capacity: ["256GB", "512GB", "1TB"],
+            color: ["黑色鈦金屬", "白色鈦金屬", "藍色鈦金屬", "原色鈦金屬"],
+            model: ["A2849（美國、波多黎各）", "A3105（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A3108（中國大陸、香港、澳門）", "A3106（其他國家與地區）"],
+            note: "詳細資料：iPhone 15 Pro Max 配備 6.7 吋1 全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的鈦金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。背面設置三種相機：超廣角、主相機和望遠相機。背面設置光學雷達掃描儀。背面設置 LED 原彩閃光燈。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/111828",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-pro-max.png"
+          },
+          {
+            name: "iPhone 15 Pro",
+            date: 1694534400000,
+            capacity: ["128GB", "256GB", "512GB", "1TB"],
+            color: ["黑色鈦金屬", "白色鈦金屬", "藍色鈦金屬", "原色鈦金屬"],
+            model: ["A2848（美國、波多黎各）", "A3101（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A3104（中國大陸、香港、澳門）", "A3102（其他國家與地區）"],
+            note: "詳細資料：iPhone 15 Pro 配備 6.1 吋1 全螢幕超 Retina XDR 顯示器和動態島。背面為霧面質感玻璃，搭配弧形邊緣的鈦金屬邊框。動作按鈕在裝置左側上方，側邊按鈕在裝置右側。背面設置三種相機：超廣角、主相機和望遠相機。背面設置光學雷達掃描儀。背面設置 LED 原彩閃光燈。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/111829",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-pro.png"
+          },
+          {
+            name: "iPhone 15 Plus",
+            date: 1694534400000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["黑色", "藍色", "綠色", "黃色", "粉紅色"],
+            model: ["A2847（美國、波多黎各）", "A3093（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A3096（中國大陸、香港、澳門）", "A3094（其他國家與地區）"],
+            note: "詳細資料：iPhone 15 Plus 配備 6.7 吋1 全螢幕超 Retina XDR 顯示器和動態島。背面為注色玻璃，搭配弧形邊緣的陽極處理鋁金屬邊框。側邊按鈕在裝置的右側。背面設置兩種相機：超廣角和主相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/111830",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15-plus.png"
+          },
+          {
+            name: "iPhone 15",
+            date: 1694534400000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["黑色", "藍色", "綠色", "黃色", "粉紅色"],
+            model: ["A2846（美國、波多黎各）", "A3089（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A3092（中國大陸、香港、澳門）", "A3090（其他國家與地區）"],
+            note: "詳細資料：iPhone 15 配備 6.1 吋1 全螢幕超 Retina XDR 顯示器和動態島。背面為注色玻璃，搭配弧形邊緣的陽極處理鋁金屬邊框。側邊按鈕在裝置的右側。背面設置兩種相機：超廣角和主相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。底部設置 USB-C 連接器，可用來充電和傳輸資料。",
+            link: "https://support.apple.com/zh-tw/111831",
+            src: "https://cdsassets.apple.com/live/7WUAS350/images/iphone/fall-2023-iphone-colors-iphone-15.png"
+          },
+          {
+            name: "iPhone 14 Pro Max",
+            date: 1663257600000,
+            capacity: ["128GB", "256GB", "512GB", "1TB"],
+            color: ["銀色", "金色", "太空黑色", "深紫色"],
+            model: ["A2651（美國、波多黎各）", "A2893（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A2896（中國大陸、香港、澳門）", "A2895（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2894（其他國家和地區）"],
+            note: "詳細資料：iPhone 14 Pro Max 配備 6.7 英寸1 全螢幕超 Retina XDR 顯示器。背面為優質霧面玻璃，搭配邊緣平整的不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置三鏡頭相機：超廣角、主相機和望遠相機。背面設置光學雷達掃描儀。背面設置 LED「原彩」閃光燈。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。",
+            link: "https://support.apple.com/zh-tw/111846",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-14-pro-max-colors.png"
+          },
+          {
+            name: "iPhone 14 Pro",
+            date: 1663257600000,
+            capacity: ["128GB", "256GB", "512GB", "1TB"],
+            color: ["銀色", "金色", "太空黑色", "深紫色"],
+            model: ["A2650（美國、波多黎各）", "A2889（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A2892（中國大陸、香港、澳門）", "A2891（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2890（其他國家和地區）"],
+            note: "iPhone 14 Pro 配備 6.1 英寸1 全螢幕超 Retina XDR 顯示器。背面為優質霧面玻璃，搭配邊緣平整的不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置三鏡頭相機：超廣角、主相機和望遠相機。背面設置光學雷達掃描儀。背面設置 LED「原彩」閃光燈。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。",
+            link: "https://support.apple.com/zh-tw/111849",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-14-pro-colors.png"
+          },
+          {
+            name: "iPhone 14 Plus",
+            date: 1663257600000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["午夜色", "星光色","（PRODUCT）RED", "藍色", "紫色", "黃色" ],
+            model: ["A2632（美國、波多黎各）", "A2885（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A2888（中國大陸、香港、澳門）", "A2887（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2886（其他國家和地區）"],
+            note: "iPhone 14 Plus 配備 6.7 英寸1 全螢幕超 Retina XDR 顯示器。背面為玻璃，搭配邊緣平整的鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置雙鏡頭相機：超廣角和主相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。",
+            link: "https://support.apple.com/zh-tw/111854",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-14-plus-colors-spring-2023.png"
+          },
+          {
+            name: "iPhone 14",
+            date: 1663257600000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["午夜色", "星光色","（PRODUCT）RED", "藍色", "紫色", "黃色" ],
+            model: ["A2649（美國、波多黎各）", "A2881（加拿大、關島、日本、墨西哥、沙烏地阿拉伯和美屬維京群島）", "A2884（中國大陸、香港、澳門）", "A2883（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2882（其他國家和地區）"],
+            note: "iPhone 14 配備 6.1 英寸1 全螢幕超 Retina XDR 顯示器。背面為玻璃，搭配邊緣平整的鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置雙鏡頭相機：超廣角和主相機。美國的機型未配備 SIM 卡托盤。在其他國家或地區，左側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。",
+            link: "https://support.apple.com/zh-tw/111850",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-14-colors-spring-2023.png"
+          },
+          {
+            name: "iPhone SE（第 3 代）",
+            date: 1646668800000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["（PRODUCT）RED", "星光色", "午夜色"],
+            model: ["A2595（美國、加拿大、波多黎各、美屬維京群島、關島、墨西哥、沙烏地阿拉伯）", "A2782（日本）", "A2784（俄羅斯、亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯）", "A2785（中國大陸）、A2783（其他國家和地區）"],
+            note: "顯示器 4.7 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面為玻璃，搭配鍍鋁金屬邊框。側邊按鈕在裝置的右側。裝置配備具有 Touch ID 的固態式主畫面按鈕。背面設置 1200 萬像素廣角相機。背面設置 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111866",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-se-3rd-gen-colors.png"
+          },
+          {
+            name: "iPhone 13 Pro Max",
+            date: 1631548800000,
+            capacity: ["128GB", "256GB", "512GB", "1TB"],
+            color: ["石墨色", "金色", "銀色", "天峰藍色"],
+            model: ["A2484（美國）", "A2641（加拿大、日本、墨西哥、沙烏地阿拉伯）", "A2644（中國大陸、香港、澳門）", "A2645（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2643（其他國家和地區）"],
+            note: "iPhone 13 Pro Max 配備 6.7 英寸1 全螢幕超 Retina XDR 顯示器，具備 ProMotion 自動適應更新頻率技術。背面為霧面質感玻璃，搭配邊緣平整的不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素三鏡頭相機：超廣角、廣角和望遠相機。背面設置光學雷達掃描儀。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111870",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone13promax/2021-fall-iphone13-pro-max-colors.png"
+          },
+          {
+            name: "iPhone 13 Pro",
+            date: 1631548800000,
+            capacity: ["128GB", "256GB", "512GB", "1TB"],
+            color: ["石墨色", "金色", "銀色", "天峰藍色"],
+            model: ["A2483（美國）", "A2636（加拿大、日本、墨西哥、沙烏地阿拉伯）", "A2639（中國大陸、香港、澳門）", "A2640（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2638（其他國家和地區）"],
+            note: "iPhone 13 Pro 配備 6.1 英寸1 全螢幕超 Retina XDR 顯示器，具備 ProMotion 自動適應更新頻率技術。背面為霧面質感玻璃，搭配邊緣平整的不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素三鏡頭相機：超廣角、廣角和望遠相機。背面設置光學雷達掃描儀。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111871",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone13pro/2021-fall-iphone13-pro-colors.png"
+          },
+          {
+            name: "iPhone 13",
+            date: 1631548800000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["（PRODUCT）RED", "星光色", "午夜色", "藍色", "粉紅色"],
+            model: ["A2482（美國）", "A2631（加拿大、日本、墨西哥、沙烏地阿拉伯）", "A2634（中國大陸、香港、澳門）", "A2635（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2633（其他國家和地區）"],
+            note: "iPhone 13 配備 6.1 英寸1 全螢幕超 Retina XDR 顯示器。背面為玻璃，搭配邊緣平整的鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素雙鏡頭相機：超廣角和廣角相機。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111872",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone13/2021-fall-iphone13-colors.png"
+          },
+          {
+            name: "iPhone 13 mini",
+            date: 1631548800000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["（PRODUCT）RED", "星光色", "午夜色", "藍色", "粉紅色"],
+            model: ["A2481（美國）", "A2626（加拿大、日本、墨西哥、沙烏地阿拉伯）", "A2629（中國大陸）", "A2630（亞美尼亞、白俄羅斯、哈薩克、吉爾吉斯、俄羅斯）", "A2628（其他國家和地區）"],
+            note: "iPhone 13 mini 配備 5.4 英寸1 全螢幕超 Retina XDR 顯示器。背面為玻璃，搭配邊緣平整的鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素雙鏡頭相機：超廣角和廣角相機。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111873",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone13mini/2021-fall-iphone13-mini-colors.png"
+          },
+          {
+            name: "iPhone 12 Pro Max",
+            date: 1602518400000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["銀色", "石墨色", "金色", "太平洋藍色"],
+            model: ["A2342（美國）", "A2410（加拿大、日本）", "A2412（中國大陸、香港、澳門）", "A2411（其他國家和地區）"],
+            note: "iPhone 12 Pro Max 配備 6.7 英寸1 全螢幕超 Retina XDR 顯示器。背面為霧面質感玻璃，搭配邊緣平整的不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素三鏡頭相機：超廣角、廣角和望遠相機。背面設置光學雷達掃描儀。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111874",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone12promax/iphone12-pro-max-colors.jpg"
+          },
+          {
+            name: "iPhone 12 Pro",
+            date: 1602518400000,
+            capacity: ["128GB", "256GB", "512GB"],
+            color: ["銀色", "石墨色", "金色", "太平洋藍色"],
+            model: ["A2341（美國）", "A2406（加拿大、日本）", "A2408（中國大陸、香港、澳門）", "A2407（其他國家和地區）"],
+            note: "iPhone 12 Pro 配備 6.1 英寸1 全螢幕超 Retina XDR 顯示器。背面為霧面質感玻璃，搭配邊緣平整的不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素三鏡頭相機：超廣角、廣角和望遠相機。背面設置光學雷達掃描儀。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111875",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone12pro/iphone12-pro-colors.jpg"
+          },
+          {
+            name: "iPhone 12",
+            date: 1602518400000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["黑色", "白色", "（PRODUCT）RED", "綠色", "藍色"],
+            model: ["A2176（美國）", "A2398（加拿大、日本）", "A2400（中國大陸）", "A2399（其他國家和地區）"],
+            note: "iPhone 12 mini 配備 5.4 英寸1 Liquid Retina 顯示器。背面為玻璃，搭配邊緣平整的鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素雙鏡頭相機：超廣角和廣角相機。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111876",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone12/iphone12-colors.jpg"
+          },
+          {
+            name: "iPhone 12 mini",
+            date: 1602518400000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["黑色", "白色", "（PRODUCT）RED", "綠色", "藍色"],
+            model: ["A2172（美國）", "A2402（加拿大、日本）", "A2404（中國大陸、香港、澳門）", "A2403（其他國家和地區）"],
+            note: "iPhone 12 配備 6.1 英寸1 Liquid Retina 顯示器。背面為玻璃，搭配邊緣平整的鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素雙鏡頭相機：超廣角和廣角相機。背面設置雙 LED 原彩閃光燈，左側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111877",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone12/iphone12-colors.jpg"
+          },
+          {
+            name: "iPhone SE（第 2 代）",
+            date: 1587052800000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["白色", "黑色", "（PRODUCT）RED"],
+            model: ["A2275（加拿大、美國）", "A2298（中國大陸）", "A2296（其他國家和地區）"],
+            note: "顯示器 4.7 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面為玻璃，搭配鍍鋁金屬邊框。側邊按鈕在裝置的右側。裝置配備具有 Touch ID 的固態式主畫面按鈕。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111882",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone_se/iphone-se-2nd-gen-colors.jpg"
+          },
+          {
+            name: "iPhone 11 Pro Max",
+            date: 1568908800000,
+            capacity: ["64GB", "256GB", "512GB"],
+            color: ["銀色", "太空灰色", "金色", "夜幕綠色"],
+            model: ["A2161（加拿大、美國）", "A2220（中國大陸、香港、澳門）", "A2218（其他國家和地區）"],
+            note: "iPhone 11 Pro Max 配備 6.5 英寸1 全螢幕超 Retina XDR 顯示器。背面為霧面質感玻璃，搭配不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素三鏡頭相機：超廣角、廣角和望遠相機。背面設置雙 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "hhttps://support.apple.com/zh-tw/111878",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/identify-iphone-11pro-max.jpg"
+          },
+          {
+            name: "iPhone 11 Pro",
+            date: 1568908800000,
+            capacity: ["64GB", "256GB", "512GB"],
+            color: ["銀色", "太空灰色", "金色", "夜幕綠色"],
+            model: ["A2160（加拿大、美國）", "A2217（中國大陸、香港、澳門）", "A2215（其他國家和地區）"],
+            note: "iPhone 11 Pro 配備 5.8 英寸1 全螢幕超 Retina XDR 顯示器。背面為霧面質感玻璃，搭配不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素三鏡頭相機：超廣角、廣角和望遠相機。背面設置雙 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111879",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/identify-iphone-11pro.jpg"
+          },
+          {
+            name: "iPhone 11",
+            date: 1568908800000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["紫色", "綠色", "黃色", "黑色", "白色", "（PRODUCT）RED"],
+            model: ["A2111（加拿大、美國）", "A2223（中國大陸、香港、澳門）", "A2221（其他國家和地區）"],
+            note: "iPhone 11 配備 6.1 英寸1 Liquid Retina 顯示器。背面為玻璃，搭配鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素雙鏡頭相機：超廣角和廣角相機。背面設置雙 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111865",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/identify-iphone-11-colors.jpg"
+          },
+          {
+            name: "iPhone XR",
+            date: 1540483200000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["黑色", "白色", "藍色", "黃色", "珊瑚色", "（PRODUCT）RED"],
+            model: ["A1984", "A2105", "A2106（日本）", "A2107", "A2108（中國大陸）"],
+            note: "iPhone XR 配備 6.1 英寸1 Liquid Retina 顯示器。背面為玻璃，搭配鍍鋁金屬邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素廣角相機。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111868",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-xr/identify-iphone-xr-colors.jpg"
+          },
+          {
+            name: "iPhone XS Max",
+            date: 1536681600000,
+            capacity: ["64GB", "256GB", "512GB"],
+            color: ["銀色", "太空灰色", "金色"],
+            model: ["A1921", "A2101", "A2102（日本）", "A2103", "A2104（中國大陸）"],
+            note: "iPhone XS Max 配備 6.5 英寸1 全螢幕超 Retina 顯示器。背面為玻璃，搭配不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素廣角與望遠相機。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。3 IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111880",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-xs-max-colors.jpg"
+          },
+          {
+            name: "iPhone XS",
+            date: 1536681600000,
+            capacity: ["64GB", "256GB", "512GB"],
+            color: ["銀色", "太空灰色", "金色"],
+            model: ["A1920", "A2097", "A2098（日本）", "A2099", "A2100（中國大陸）"],
+            note: "iPhone XS 配備 5.8 英寸1 全螢幕超 Retina 顯示器。背面為玻璃，搭配不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素廣角與望遠相機。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111881",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-xs-colors.jpg"
+          },
+          {
+            name: "iPhone X",
+            date: 1509638400000,
+            capacity: ["64GB", "256GB"],
+            color: ["銀色", "太空灰色"],
+            model: ["A1865", "A1901", "A1902（日本）"],
+            note: "iPhone X 配備 5.8 英寸1 全螢幕超 Retina 顯示器。背面為玻璃，搭配不鏽鋼邊框。側邊按鈕在裝置的右側。背面設置 1200 萬像素廣角與望遠相機。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111864",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-x-colors.jpg"
+          },
+          {
+            name: "iPhone 8",
+            date: 1505145600000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["金色", "銀色", "太空灰色", "（PRODUCT）RED"],
+            model: ["A1863", "A1905", "A1906（日本）"],
+            note: "顯示器 4.7 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面為玻璃，搭配鍍鋁金屬邊框。側邊按鈕在裝置的右側。裝置配備具有 Touch ID 的固態式主畫面按鈕。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111976",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone8/iphone-8-colors.jpg"
+          },
+          {
+            name: "iPhone 8 Plus",
+            date: 1505145600000,
+            capacity: ["64GB", "128GB", "256GB"],
+            color: ["金色", "銀色", "太空灰色", "（PRODUCT）RED"],
+            model: ["A1864", "A1897", "A1898（日本）"],
+            note: "顯示器 5.5 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面為玻璃，搭配鍍鋁金屬邊框。側邊按鈕在裝置的右側。裝置配備具有 Touch ID 的固態式主畫面按鈕。背面設置 1200 萬像素廣角與望遠相機。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111950",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone8plus/iphone-8plus-colors.jpg"
+          },
+          {
+            name: "iPhone 7",
+            date: 1473177600000,
+            capacity: ["32GB", "128GB", "256GB"],
+            color: ["黑色", "曜石黑色", "金色", "玫瑰金色", "銀色", "（PRODUCT）RED"],
+            model: ["A1660", "A1778", "A1779（日本）"],
+            note: "顯示器 4.7 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面鍍鋁。睡眠/喚醒按鈕在裝置的右側。裝置配備具有 Touch ID 的固態式主畫面按鈕。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111943",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone7/iphone7-colors.jpg"
+          },
+          {
+            name: "iPhone 7 Plus",
+            date: 1473177600000,
+            capacity: ["32GB", "128GB", "256GB"],
+            color: ["黑色", "曜石黑色", "金色", "玫瑰金色", "銀色", "（PRODUCT）RED"],
+            model: ["A1661", "A1784", "A1785（日本）"],
+            note: "顯示器 5.5 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面鍍鋁。睡眠/喚醒按鈕在裝置的右側。裝置配備具有 Touch ID 的固態式主畫面按鈕。背面設置 1200 萬像素雙鏡頭相機。背面設置四合一 LED 原彩閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111953",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone7plus/iphone7plus-colors.jpg"
+          },
+          {
+            name: "iPhone SE（第 1 代）",
+            date: 1458489600000,
+            capacity: ["16GB", "32GB", "64GB", "128GB"],
+            color: ["太空灰色", "銀色", "金色", "玫瑰金色"],
+            model: ["A1723", "A1662", "A1724"],
+            note: "顯示器 4 英寸（對角線）。機身正面為平滑玻璃材質。背面鍍鋁，搭配霧面切邊及不鏽鋼嵌入標誌。睡眠/喚醒按鈕在裝置的頂端。主畫面按鈕具備 Touch ID。背面設置「原彩」LED 閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/112005",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone_se/iphone-se-colors.jpg"
+          },
+          {
+            name: "iPhone 6s",
+            date: 1443110400000,
+            capacity: ["16GB", "32GB", "64GB", "128GB"],
+            color: ["太空灰色", "銀色", "金色", "玫瑰金色"],
+            model: ["A1633", "A1688", "A1700"],
+            note: "顯示器 4.7 英寸（對角線）。正面玻璃是平的，邊緣為圓弧造型。背面鍍鋁，上有雷射雕刻的「S」。睡眠/喚醒按鈕在裝置的右側。主畫面按鈕具備 Touch ID。背面設置「原彩」LED 閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111952",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6s-colors.jpg"
+          },
+          {
+            name: "iPhone 6s Plus",
+            date: 1443110400000,
+            capacity: ["16GB", "32GB", "64GB", "128GB"],
+            color: ["太空灰色", "銀色", "金色", "玫瑰金色"],
+            model: ["A1634", "A1687", "A1699"],
+            note: "顯示器 5.5 英寸（對角線）。正面是平的，邊緣為圓弧造型，由玻璃製成。背面鍍鋁，上有雷射雕刻的「S」。睡眠/喚醒按鈕在裝置的右側。主畫面按鈕具備 Touch ID。背面設置「原彩」LED 閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/111996",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-6splus-colors.jpg"
+          },
+          {
+            name: "iPhone 6",
+            date: 1410192000000,
+            capacity: ["16GB", "32GB", "64GB", "128GB"],
+            color: ["太空灰色", "銀色", "金色"],
+            model: ["A1549", "A1586", "A1589"],
+            note: "顯示器 4.7 英寸（對角線）。正面是平的，邊緣為圓弧造型，由玻璃製成。背面鍍鋁。睡眠/喚醒按鈕在裝置的右側。主畫面按鈕具備 Touch ID。背面設置「原彩」LED 閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/111954",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone6-colors.jpg"
+          },
+          {
+            name: "iPhone 6 Plus",
+            date: 1410192000000,
+            capacity: ["16GB", "64GB", "12GB8"],
+            color: ["太空灰色", "銀色", "金色"],
+            model: ["A1522", "A1524", "A1593"],
+            note: "顯示器 5.5 英寸（對角線）。正面邊緣為圓弧造型，由玻璃製成。背面鍍鋁。睡眠/喚醒按鈕在裝置的右側。主畫面按鈕具備 Touch ID。背面設置「原彩」LED 閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/111940",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone6plus-colors.jpg"
+          },
+          {
+            name: "iPhone 5s",
+            date: 1379606400000,
+            capacity: ["16GB", "32GB", "64GB"],
+            color: ["太空灰色", "銀色", "金色"],
+            model: ["A1453", "A1457", "A1518", "A1528", "A1530", "A1533"],
+            note: "正面是平的，由玻璃製成。背面鍍鋁。主畫面按鈕包含 Touch ID。背面設置「原彩」LED 閃光燈，右側的 SIM 卡托盤可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/111973",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone5s-colors.jpg"
+          },
+          {
+            name: "iPhone 5c",
+            date: 1379606400000,
+            capacity: ["8GB", "16GB", "32GB"],
+            color: ["白色", "藍色", "粉紅色", "綠色", "黃色"],
+            model: ["A1456", "A1507", "A1516", "A1529", "A1532"],
+            note: "正面是平的，由玻璃製成。背面是硬式聚碳酸酯（塑膠）。右側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/111917",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone5c-colors.jpg"
+          },
+          {
+            name: "iPhone 5",
+            date: "2012/09/21",
+            capacity: ["16GB", "32GB", "64GB"],
+            color: ["黑色", "白色"],
+            model: ["A1428", "A1429", "A1442"],
+            note: "正面是平的，由玻璃製成。背面鍍鋁。右側配有 SIM 卡托盤，可裝入「Fourth Form Factor」（4FF）nano-SIM 卡。IMEI 刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/112016",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone5-colors.jpg"
+          },
+          {
+            name: "iPhone 4s",
+            date: 1318521600000,
+            capacity: ["8GB", "16GB", "32GB", "64GB"],
+            color: ["黑色", "白色"],
+            model: ["A1431", "A1387"],
+            note: "正面和背面都是平的，由玻璃製成，四周邊緣是不鏽鋼環帶。調高音量與調低音量按鈕標示有「+」和「-」符號。右側配有 SIM 卡托盤，可裝入「Third Form Factor」（3FF）micro-SIM 卡。",
+            link: "https://support.apple.com/zh-tw/112004",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone4s-colors.jpg"
+          },
+          {
+            name: "iPhone 4",
+            date: 1277308800000,
+            capacity: ["8GB", "16GB", "32GB"],
+            color: ["黑色", "白色"],
+            model: ["A1349", "A1332"],
+            note: "正面和背面都是平的，由玻璃製成，四周邊緣是不鏽鋼環帶。調高音量與調低音量按鈕標示有「+」和「-」符號。右側配有 SIM 卡托盤，可裝入「Third Form Factor」（3FF）micro-SIM 卡。CDMA 機型並未設置 SIM 卡托盤。",
+            link: "https://support.apple.com/zh-tw/112562",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone4-colors.jpg"
+          },
+          {
+            name: "iPhone 3GS",
+            date: 1245340800000,
+            capacity: ["8GB", "16GB", "32GB"],
+            color: ["黑色", "白色"],
+            model: ["A1325", "A1303"],
+            note: "背殼是塑膠材質。背蓋上的刻印和 Apple 標誌使用同樣的光亮銀色字體。頂端配有 SIM 卡托盤，可裝入「Second Form Factor」（2FF）mini-SIM 卡。序號印製在 SIM 卡托盤上。",
+            link: "https://support.apple.com/zh-tw/112307",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone3gs-colors.jpg"
+          },
+          {
+            name: "iPhone 3G",
+            date: 1215705600000,
+            capacity: ["8GB", "16GB"],
+            color: ["黑色", "白色"],
+            model: ["A1324", "A1241"],
+            note: "背殼是塑膠材質。手機背面的刻印與上方的 Apple 標誌相比，使用較不光亮的字體。頂端配有 SIM 卡托盤，可裝入「Second Form Factor」（2FF）mini-SIM 卡。序號印製在 SIM 卡托盤上。",
+            link: "https://support.apple.com/zh-tw/112496",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone3g-colors.jpg"
+          },
+          {
+            name: "iPhone",
+            date: 1183046400000,
+            capacity: ["4GB", "8GB", "16GB"],
+            color: ["黑色", "白色"],
+            model: ["A1203"],
+            note: "背殼由鍍鋁製成。頂端配有 SIM 卡托盤，可裝入「Second Form Factor」（2FF）mini-SIM 卡。序號刻印於背蓋。",
+            link: "https://support.apple.com/zh-tw/112445",
+            src: "https://support.apple.com/library/content/dam/edam/applecare/images/en_US/iphone/iphone-iphone-original-colors.jpg"
+          }
+        ]);
+        // TODO
+
+        return {
+          phones,
+          // TODO
+
+        };
+      },
+    };
+
+    createApp(app).mount('#App');
+
+  </script>
+
+</body>
+
+</html>
