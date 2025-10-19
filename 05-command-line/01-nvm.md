@@ -4,6 +4,17 @@
 * 解決專案間 Node 版本不一致的問題，讓開發者能依專案需要切換 Node 版本。
 * macOS / Linux 通常使用 nvm（shell script）。Windows 有社群版本 nvm-windows（不同專案 repo、細節略有差異）。
 
+## 安裝 NVM
+
+### Windows
+
+1. [下載連結](https://github.com/coreybutler/nvm-windows/releases)。
+2. 請選擇 `nvm-setup.exe` 下載並安裝。
+
+### macOS
+
+1. [教學](https://www.casper.tw/development/2022/01/10/install-nvm/)。
+
 ## 常用指令與示例
 
 ```bash
