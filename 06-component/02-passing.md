@@ -1,8 +1,68 @@
-# 元件
+# 傳遞
 
-## 傳遞
+## props
 
-### 靜態與動態
+需要宣告接受傳入的資料，這樣 Vue 元件才能知道外部傳入的資料哪些是 `props`? 哪些是穿透屬性? `props` 可以使用 `defineProps()` 來宣告：
+
+```js
+<script setup>
+defineProps(['name', 'age']);
+</script>
+```
+
+```js
+<script setup>
+const props = defineProps(['name', 'age']);
+
+console.log(props.name);
+console.log(props.age);
+</script>
+```
+
+```js
+<script setup>
+defineProps({
+  name: String,
+  age: Number
+});
+</script>
+```
+
+```js
+<script setup>
+defineProps({
+  name: {
+    type: String,
+    default: ''
+  },
+  age: {
+    type: Nubmer,
+    default: 10
+  }
+});
+</script>
+```
+
+```tip
+* 靜態：值是固定字串，不會隨資料變動。
+* 動態：綁定變數、表達式、運算結果。
+```
+
+## emit
+
+
+## v-model
+
+## 深層
+
+## 狀態管理
+
+
+
+
+
+
+## 靜態與動態
 
 * https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png
 * iPhone 17 Pro Max
