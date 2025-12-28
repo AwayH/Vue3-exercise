@@ -5,35 +5,29 @@
 `props` 可以使用 `defineProps()` 來宣告：
 
 ```js
-<script setup>
 defineProps(['name', 'age']);
-</script>
 ```
 
 ```js
-<script setup>
+
 const props = defineProps(['name', 'age']);
 
 console.log(props.name);
 console.log(props.age);
-</script>
 ```
 
 除了上述用陣列字串來宣告之外，亦可使用物件的形式宣告。對於以物件形式的宣告每個屬性，`key` 是 `prop` 的名稱，`value` 是 `prop` 預期型別。如果預期 `props` 的 `value` 是字串類型，則可以使用 `String` 作為型別的宣告值。如下:
 
 ```js
-<script setup>
 defineProps({
   name: String,
   age: Number
 });
-</script>
 ```
 
 物件形式的 `props` 宣告除了可以規範傳入的資料類型，而且在於其他開發者若傳入的資料類型與規範有誤，也會在瀏覽器的主控台 (console) 中出現警告。如下:
 
 ```js
-<script setup>
 defineProps({
   name: {
     type: String,
@@ -44,7 +38,6 @@ defineProps({
     default: 10
   }
 });
-</script>
 ```
 
 ## 靜態與動態
@@ -60,8 +53,7 @@ defineProps({
 
 ## 範例
 
-
-## 靜態與動態
+### 靜態與動態
 
 * https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png
 * iPhone 17 Pro Max
