@@ -60,7 +60,7 @@ defineProps({
 
 ### 動態
 
-``` javascript
+``` js
 ['html', 'rwd', 'javascript', 'vue', 'sass']
 ```
 
@@ -104,7 +104,7 @@ defineProps({
 
 ### 型別與驗證
 
-``` javascript
+``` js
 {
   name: 'Away',
   fullName: () => `${user.name} Hung`,
@@ -121,7 +121,7 @@ defineProps({
 
 ### 渲染
 
-``` javascript
+``` js
 [
   {
     id: 1,
