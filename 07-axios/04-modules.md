@@ -52,9 +52,9 @@ export default instance;
 import instance from './instance';
 
 export default {
-  async GET(endPoint, params = {}) {
+  async GET(endPoint, config = {}) {
     try {
-      const res = await instance.get(endPoint, { params });
+      const res = await instance.get(endPoint, config);
       return res.data;
     } catch (err) {
       console.log(err);

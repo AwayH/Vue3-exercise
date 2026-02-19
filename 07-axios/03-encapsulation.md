@@ -53,9 +53,9 @@ const instance = axios.create({
 
 ```js
 const api = {
-  async GET(endPoint, params = {}) {
+  async GET(endPoint, config = {}) {
     try {
-      const res = await instance.get(endPoint, { params });
+      const res = await instance.get(endPoint, config);
       return res.data;
     } catch (err) {
       console.log(err);
