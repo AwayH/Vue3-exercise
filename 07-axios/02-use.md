@@ -46,13 +46,30 @@ axios
 
 ## 實務型
 
+在業界，常會使用 ES7 的 `async`、`await` 這種 `Promise` 的語法糖來處理非同步操作，讓非同步的程式碼看起來更加簡潔。如下：
+
 ```js
-try {
+async function setData() {
   const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
   console.log(res.data);
-} catch (err) {
-  console.error(err);
-} finally {
-  console.log("資料請求結束");
 }
+
+setData();
+```
+
+但這樣的語法糖卻又缺少了錯誤的處理。因此，使用 `try...catch` 來捕捉 `await` 產生的錯誤，會比傳統的 `then()` `catch()` 更為直觀。如下：
+
+```js
+async function setData() {
+  try {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+    console.log(res.data);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    console.log("資料請求結束");
+  }
+}
+
+setData();
 ```
