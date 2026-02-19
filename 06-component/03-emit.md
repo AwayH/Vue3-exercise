@@ -25,9 +25,9 @@ function updateCounter() {
 }
 ```
 
-``` tip
+::: tip
 若有需要向父層傳遞特殊資料，可用參數的方式傳遞。如: `$emit('someEvent', 100)`;
-```
+:::
 
 ## 宣告觸發事件
 

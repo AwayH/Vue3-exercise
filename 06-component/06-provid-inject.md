@@ -22,13 +22,11 @@ import { inject } from "vue";
 const theme = inject("theme");
 ```
 
-:::tip
+::: tip
 如果沒有父元件的 `provide` 時，子元件使用 `inject` 要噴警告! 因此，建議加上預設值較佳。
-
 ```js
 const theme = inject("theme", "light");
 ```
-
 :::
 
 ## 響應式資料
