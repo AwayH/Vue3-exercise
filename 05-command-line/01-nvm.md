@@ -1,8 +1,8 @@
 # NVM 是什麼
 
-* NVM = Node Version Manager，用來在同一台機器上安裝、管理與切換多個 Node.js 版本（含 npm）。
-* 解決專案間 Node 版本不一致的問題，讓開發者能依專案需要切換 Node 版本。
-* macOS / Linux 通常使用 nvm（shell script）。Windows 有社群版本 nvm-windows（不同專案 repo、細節略有差異）。
+- NVM = Node Version Manager，用來在同一台機器上安裝、管理與切換多個 Node.js 版本（含 npm）。
+- 解決專案間 Node 版本不一致的問題，讓開發者能依專案需要切換 Node 版本。
+- macOS / Linux 通常使用 nvm（shell script）。Windows 有社群版本 nvm-windows（不同專案 repo、細節略有差異）。
 
 ## 安裝 NVM
 

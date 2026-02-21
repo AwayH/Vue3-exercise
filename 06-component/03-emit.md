@@ -8,20 +8,21 @@
 
 ### 下(子)層。
 
-``` html
-<input type="button" @click="$emit('someEvent')" value="通知上(父)層">
+```html
+<input type="button" @click="$emit('someEvent')" value="通知上(父)層" />
 ```
 
 ### 上(父)層。
 
-``` html
+```html
 <Counter @some-event="counter++" />
 <Counter @some-event="() => counter++" />
 <Counter @some-event="updateCounter" />
 ```
-``` js
+
+```js
 function updateCounter() {
-  counter.value ++;
+  counter.value++;
 }
 ```
 
@@ -33,7 +34,7 @@ function updateCounter() {
 
 元件內用 `defineEmits()` 來宣告要觸發的事件，如下:
 
-``` js
+```js
 const emit = defineEmits(['someEvent']);
 
 function clickHandler() {

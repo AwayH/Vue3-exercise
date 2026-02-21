@@ -9,7 +9,6 @@ defineProps(['name', 'age']);
 ```
 
 ```js
-
 const props = defineProps(['name', 'age']);
 
 console.log(props.name);
@@ -21,7 +20,7 @@ console.log(props.age);
 ```js
 defineProps({
   name: String,
-  age: Number
+  age: Number,
 });
 ```
 
@@ -31,19 +30,19 @@ defineProps({
 defineProps({
   name: {
     type: String,
-    default: ''
+    default: '',
   },
   age: {
     type: Nubmer,
-    default: 10
-  }
+    default: 10,
+  },
 });
 ```
 
 ## 靜態與動態
 
-* 靜態：值是固定字串，不會隨資料變動。
-* 動態：綁定變數、表達式、運算結果。
+- 靜態：值是固定字串，不會隨資料變動。
+- 動態：綁定變數、表達式、運算結果。
 
 ::: tip
 所有的 `props` 都遵循 **單向數據** 流的規範，`props` 會因上(父)層元件的資料更新而變化，所以會將更新的狀態流向下(子)層元件。不允許逆性傳遞，這樣可以避免下(子)層元件修改到上(父)層元件。
@@ -55,16 +54,16 @@ defineProps({
 
 ### 靜態與動態
 
-* https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png
-* iPhone 17 Pro Max
+- https://cdsassets.apple.com/live/7WUAS350/images/iphone/iphone-17-pro-max-colors.png
+- iPhone 17 Pro Max
 
 ### 動態
 
-``` js
-['html', 'rwd', 'javascript', 'vue', 'sass']
+```js
+['html', 'rwd', 'javascript', 'vue', 'sass'];
 ```
 
-``` css
+```css
 .bevel__item {
   position: relative;
   padding: 1rem;
@@ -97,14 +96,14 @@ defineProps({
   border-left: solid 1px #ccc;
 }
 
-.bevel__item+.bevel__item {
+.bevel__item + .bevel__item {
   margin-top: 1rem;
 }
 ```
 
 ### 型別與驗證
 
-``` js
+```js
 {
   name: 'Away',
   fullName: () => `${user.name} Hung`,
@@ -121,7 +120,7 @@ defineProps({
 
 ### 渲染
 
-``` js
+```js
 [
   {
     id: 1,
@@ -148,12 +147,12 @@ defineProps({
     isRelease: true,
     name: '鈴芽之旅',
   },
-]
+];
 ```
 
-``` css
+```css
 .box {
-  padding: .7rem 1rem;
+  padding: 0.7rem 1rem;
   margin-bottom: 1rem;
 }
 

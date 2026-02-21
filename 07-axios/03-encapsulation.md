@@ -6,8 +6,8 @@
 
 ```js
 axios({
-  method: "get",
-  url: "https://jsonplaceholder.typicode.com/users",
+  method: 'get',
+  url: 'https://jsonplaceholder.typicode.com/users',
   timeout: 5000,
   headers: {
     'Content-Type': 'application/json',
@@ -18,10 +18,10 @@ axios({
     console.log(res.data);
   })
   .catch((err) => {
-    const status =  err?.response?.status;
-    
-    if(status === 401) console.log('權限過期');
-    if(status === 403) console.log('無此權限');
+    const status = err?.response?.status;
+
+    if (status === 401) console.log('權限過期');
+    if (status === 403) console.log('無此權限');
 
     console.log(err);
   });
@@ -33,9 +33,11 @@ axios({
 
 ### axios 實體化
 
-* `baseURL`：建議利用環境變數來判斷 `local`、`development`、`staging`、`production` 等環境。
-* `timeout`：設置超時的請求時間。
-* `headers`：設置預設的請求標頭。如果有特殊標頭以參數的方式傳入，將會覆蓋預設的請求標頭。
+為避免重複撰寫相同的設定，可將這種工作建立在一個實體上。
+
+- `baseURL`：建議利用環境變數來判斷 `local`、`development`、`staging`、`production` 等環境。
+- `timeout`：設置超時的請求時間。
+- `headers`：設置預設的請求標頭。如果有特殊標頭以參數的方式傳入，將會覆蓋預設的請求標頭。
 
 ```js
 const instance = axios.create({
@@ -73,7 +75,7 @@ const api = {
 顧名思義，就是攔截一些資訊進行處理。主要是在 **送出請求之前** 和 **收到回應之後**，在還沒進入 `then()` 或 `catch()`
 之前，將動作攔截下來，可進行一些加工的動作。基本語法如下：
 
-``` js
+```js
 function interceptors() {
   instance.interceptors.request.use(
     (req) => req,
@@ -88,12 +90,12 @@ function interceptors() {
 interceptors();
 ```
 
-* `request`：有時後端的 API 回應需要透過 token 的身份驗證，才會回傳資料。因此，我們就可以透過此攔截器在發送請求之前，將 token 加入到 `header` 中，這樣一來就能通過驗證。
-* `response`: 攔截 API 回應的資料，並進行一些狀態的處理。
+- `request`：有時後端的 API 回應需要透過 token 的身份驗證，才會回傳資料。因此，我們就可以透過此攔截器在發送請求之前，將 token 加入到 `header` 中，這樣一來就能通過驗證。
+- `response`: 攔截 API 回應的資料，並進行一些狀態的處理。
 
 再做一點補強，如下：
 
-``` js
+```js
 function interceptors() {
   instance.interceptors.request.use(
     (req) => {
@@ -135,8 +137,8 @@ interceptors();
 
 ## axios 的封裝總結
 
-|分層|責任|
-|-|-|
-|instance.js|建立 axios 實體|
-|api.js|自訂的方法封裝|
-|interceptors.js|建立攔截器來統一處理請求與回應|
+| 分層            | 責任                           |
+| --------------- | ------------------------------ |
+| instance.js     | 建立 axios 實體                |
+| api.js          | 自訂的方法封裝                 |
+| interceptors.js | 建立攔截器來統一處理請求與回應 |

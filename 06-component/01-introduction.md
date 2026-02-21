@@ -6,7 +6,7 @@
 
 Vue3 常用 Single File Component（.vue）。
 
-``` html
+```vue
 <script setup>
 import { ref } from 'vue';
 
@@ -30,7 +30,6 @@ const count = ref(0);
 
 ### 區塊說明
 
-* `<script setup>`: JS 邏輯。
-* `<template>`: HTML 結構。
-* `<style scoped>`: CSS 樣式。
-
+- `<script setup>`: JS 邏輯。
+- `<template>`: HTML 結構。
+- `<style scoped>`: CSS 樣式。

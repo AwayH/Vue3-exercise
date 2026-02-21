@@ -6,34 +6,34 @@
 
 此模式僅能分辨出以下兩種模式:
 
-* `development` - 開發模式（執行 `vite` 或 `vite dev` 時）
-* `production` - 生產模式（執行 `vite build` 時）
+- `development` - 開發模式（執行 `vite` 或 `vite dev` 時）
+- `production` - 生產模式（執行 `vite build` 時）
 
 ```js
 export default defineConfig(({ mode }) => {
   console.log(mode);
-  
+
   return {
-    略
-  }
-})
+    略,
+  };
+});
 ```
 
 ### 建立環境檔
 
 控制環境變數載入。在專案根目錄建立以下檔案:
 
-* `.env` - 所有模式都會載入
-* `.env.development` - 只在開發模式載入
-* `.env.production` - 只在生產模式載入
-* `.env.[mode]` - 載入特定模式的環境變數
+- `.env` - 所有模式都會載入
+- `.env.development` - 只在開發模式載入
+- `.env.production` - 只在生產模式載入
+- `.env.[mode]` - 載入特定模式的環境變數
 
-| 檔案 | 說明 |
-| - | - |
-| `.env` | 所有環境共用 |
-| `.env.development` | `npm run dev` 時使用 |
-| `.env.production` | `npm run build` 時使用 |
-| `.env.[mode]` | 載入特定的環境變數時使用 |
+| 檔案               | 說明                     |
+| ------------------ | ------------------------ |
+| `.env`             | 所有環境共用             |
+| `.env.development` | `npm run dev` 時使用     |
+| `.env.production`  | `npm run build` 時使用   |
+| `.env.[mode]`      | 載入特定的環境變數時使用 |
 
 ### env 環境變數的命名規則
 
@@ -55,20 +55,20 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
 
   console.log(env);
-  
+
   return {
-    略
-  }
-})
+    略,
+  };
+});
 ```
 
 ### loadEnv 作用是什麼？
 
 Vite 提供的 API，用來載入 .env 系列檔案，例如：
 
-* `.env`。
-* `.env.development`。
-* `.env.production`。
+- `.env`。
+- `.env.development`。
+- `.env.production`。
 
 ```js
 loadEnv(mode, process.cwd(), '');
@@ -78,8 +78,8 @@ loadEnv(mode, process.cwd(), '');
 
 是 Vite 執行時的模式，例如 development 或 production，Vite 會依據 mode 去找正確的 `.env` 檔案。
 
-* dev 時讀：.env + .env.development
-* build 時讀：.env + .env.production
+- dev 時讀：.env + .env.development
+- build 時讀：.env + .env.production
 
 #### process.cwd()
 
@@ -91,17 +91,18 @@ loadEnv(mode, process.cwd(), '');
 
 ::: tip
 若是遇到 `EsLint` 警告，以下任一方式都可以解決:
-* 該行程式碼上方加上 `// eslint-disable-next-line no-undef`。
-* 該檔案的第一行加上 `/* eslint-disable no-undef */`。
-* 該檔案的第一行加上 `/* global process */`。
-* 在 `ESLint` 配置中設定環境：
+
+- 該行程式碼上方加上 `// eslint-disable-next-line no-undef`。
+- 該檔案的第一行加上 `/* eslint-disable no-undef */`。
+- 該檔案的第一行加上 `/* global process */`。
+- 在 `ESLint` 配置中設定環境：
+
 ```js
 {
   env: {
-    node: true
+    node: true;
   }
 }
 ```
+
 :::
-
-

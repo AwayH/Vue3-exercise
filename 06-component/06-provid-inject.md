@@ -9,24 +9,26 @@
 ### 父元件: provide
 
 ```js
-import { provide } from "vue";
+import { provide } from 'vue';
 
-provide("theme", "dark");
+provide('theme', 'dark');
 ```
 
 ### 子元件: inject
 
 ```js
-import { inject } from "vue";
+import { inject } from 'vue';
 
-const theme = inject("theme");
+const theme = inject('theme');
 ```
 
 ::: tip
 如果沒有父元件的 `provide` 時，子元件使用 `inject` 要噴警告! 因此，建議加上預設值較佳。
+
 ```js
-const theme = inject("theme", "light");
+const theme = inject('theme', 'light');
 ```
+
 :::
 
 ## 響應式資料
@@ -36,18 +38,18 @@ const theme = inject("theme", "light");
 #### 父元件: provide
 
 ```js
-import { ref, provide } from "vue";
+import { ref, provide } from 'vue';
 
 const counter = ref(0);
-provide("counter", counter);
+provide('counter', counter);
 ```
 
 #### 子元件: inject
 
 ```js
-import { inject } from "vue";
+import { inject } from 'vue';
 
-const counter = inject("counter", 10);
+const counter = inject('counter', 10);
 
 counter.value++;
 ```
@@ -57,21 +59,21 @@ counter.value++;
 #### 父元件: provide
 
 ```js
-import { provide } from "vue";
+import { provide } from 'vue';
 
 function updateTheme(val) {
   theme.value = val;
 }
 
-provide("updateTheme", updateTheme);
+provide('updateTheme', updateTheme);
 ```
 
 #### 子元件: inject
 
 ```js
-import { inject } from "vue";
+import { inject } from 'vue';
 
-const updateTheme = inject("updateTheme");
+const updateTheme = inject('updateTheme');
 
-updateTheme("light");
+updateTheme('light');
 ```

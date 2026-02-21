@@ -5,11 +5,11 @@
 ### 語法一
 
 ```js
-import axios from "axios";
+import axios from 'axios';
 
 axios({
-  method: "get",
-  url: "https://jsonplaceholder.typicode.com/todos",
+  method: 'get',
+  url: 'https://jsonplaceholder.typicode.com/todos',
 })
   .then((res) => {
     console.log(res.data);
@@ -23,7 +23,7 @@ axios({
 
 ```js
 axios
-  .get("https://jsonplaceholder.typicode.com/todos")
+  .get('https://jsonplaceholder.typicode.com/todos')
   .then((res) => {
     console.log(res.data);
   })
@@ -50,7 +50,7 @@ axios
 
 ```js
 async function setData() {
-  const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+  const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
   console.log(res.data);
 }
 
@@ -62,12 +62,12 @@ setData();
 ```js
 async function setData() {
   try {
-    const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
+    const res = await axios.get('https://jsonplaceholder.typicode.com/todos');
     console.log(res.data);
   } catch (err) {
     console.log(err);
   } finally {
-    console.log("資料請求結束");
+    console.log('資料請求結束');
   }
 }
 

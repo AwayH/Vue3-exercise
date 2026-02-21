@@ -2,22 +2,23 @@
 
 在實務開發中，axios 模組化的目的是：
 
-* 統一 `baseURL`、`headers`、token、錯誤處理。
-* API 分類管理。
-* 方便維護與擴充。
+- 統一 `baseURL`、`headers`、token、錯誤處理。
+- API 分類管理。
+- 方便維護與擴充。
 
 咦！？這不就是前一個章節做的事情嗎？沒錯！就是前面介紹的 **axios 封裝**，剩下來就是將檔案分開維護。這樣一來，其他元件若要使用非同步載入就可以匯入封裝好的模組，再呼叫指定的方法即可。
 
 ## axios 模組化的檔案結構
 
 `utils` 所置放的內容為工具、無框架依賴、可重用的通用功能。如下：
-* API/axios 相關。
-* 格式化日期、貨幣、數字工具。
-* Storage 封裝。
-* 驗證工具。
-* 效率相關，如：debouncd。
-* 權限判斷。
-* 常數管理。
+
+- API/axios 相關。
+- 格式化日期、貨幣、數字工具。
+- Storage 封裝。
+- 驗證工具。
+- 效率相關，如：debouncd。
+- 權限判斷。
+- 常數管理。
 
 ```
 src/
@@ -32,7 +33,7 @@ src/
 
 ### [axios] instance.js
 
-``` js
+```js
 import axios from 'axios';
 
 const instance = axios.create({
@@ -48,7 +49,7 @@ export default instance;
 
 ### [axios] api.js
 
-``` js
+```js
 import instance from './instance';
 
 export default {
@@ -65,7 +66,7 @@ export default {
 
 ### [axios] interceptors.js
 
-``` js
+```js
 import instance from './instance';
 
 export default () => {
@@ -76,7 +77,7 @@ export default () => {
       if (token) req.headers.Authorization = `Bearer ${token}`;
       return req;
     },
-    (err) => Promise.reject(err),
+    (err) => Promise.reject(err)
   );
 
   instance.interceptors.response.use(
@@ -98,14 +99,14 @@ export default () => {
       }
 
       return Promise.reject(err);
-    },
+    }
   );
 };
 ```
 
 ### [axios] main.js
 
-``` js
+```js
 import { createApp } from 'vue';
 import App from './App.vue';
 import setupInterceptors from '@/utils/axios/interceptors';
