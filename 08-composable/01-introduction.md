@@ -13,6 +13,8 @@
 
 ## Composable 的架構設計與使用方式
 
+`composables` 裡面放的內容通常用 Vue 特性把邏輯抽離出來、可重用的邏輯函數。
+
 - 將目錄名稱設定為 `composables`。
 - 新增的檔案以 `use` 作為開頭，小駝峰方式組合命名。
 - 不要在 `composable` 裡直接操作 DOM，應該透過 `ref` 或生命週期。
