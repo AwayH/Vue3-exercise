@@ -124,4 +124,12 @@ const counterStore = useCounterStore();
 const { count, doubleCount } = storeToRefs(counterStore);
 const { increment } = counterStore;
 </script>
+
+<template>
+  <div>
+    <p>計數器: {{ count }}</p>
+    <p>雙倍計數: {{ doubleCount }}</p>
+    <input @click="increment" type="button" value="increment" />
+  </div>
+</template>
 ```
