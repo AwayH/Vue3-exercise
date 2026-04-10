@@ -1,1 +1,0 @@
-[快速上手](https://zh-hk.vuejs.org/guide/quick-start.html)
